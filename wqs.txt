@@ -10,12 +10,3 @@ $ rake db:migrate
 
 $ rake db:seed
 
-$ rails s
-创建通知model
-rails generate model notice title:string text:text department:string
-
-在admin界面显示
-config/initializers/rails_admin.rb
-添加grade
-生成控制器
-rails g controller notices index
