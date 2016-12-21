@@ -125,4 +125,4 @@ Finished in 1.202169s, 7.4865 runs/s, 16.6366 assertions/s.
 
 ## 功能更新
 
-2016/12/20    组长jinrongtong     更新图表信息展示功能
+2016/12/20    组长jinrongtong     我要冲突啊
