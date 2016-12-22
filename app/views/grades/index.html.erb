@@ -21,7 +21,10 @@
               <th>培养单位</th>
               <th>课程</th>
               <th>分数</th>
+              <% if teacher_logged_in? %>
+                  <th><%= link_to "导出", grades_export_path(:course_id=>@course.id,:format => :xls) %></th>
 
+              <% end %>
             </tr>
             </thead>
             <tbody>
