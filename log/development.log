@@ -1145,4 +1145,4 @@ Processing by CoursesController#semester as HTML
   Rendered layouts/_header.html.erb (0.0ms)
   Rendered layouts/_content.html.erb (0.0ms)
   Rendered layouts/_footer.html.erb (0.0ms)
-Completed 200 OK in 189ms (Views: 185.9ms | ActiveRecord: 1.0ms)
+
