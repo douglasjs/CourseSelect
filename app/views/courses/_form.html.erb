@@ -97,7 +97,17 @@
       <div class="col-sm-9">
         <div class="input-group">
           <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
-          <%= f.text_field :semester, class: 'form-control', placeholder: "输入上课学期" %>
+
+          <%=f.select(:semester_id) do %>
+              <span class= "form-control" >
+            <% Semester.all.each do |c| -%>
+
+                <%= content_tag(:option, c.info, value:c.id )  %>
+                    </span>
+            <% end %>
+        <% end %>
+
+
         </div>
       </div>
     </div>

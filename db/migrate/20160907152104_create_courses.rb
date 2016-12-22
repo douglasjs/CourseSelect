@@ -13,7 +13,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :class_room
       t.string :course_time
       t.string :course_week
-      t.string :semester
+      t.belongs_to :semester, index:true
       t.belongs_to :teacher
       t.timestamps null: false
     end

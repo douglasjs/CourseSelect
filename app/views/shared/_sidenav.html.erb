@@ -20,11 +20,10 @@
     <div id="CourseCollapse" class="panel-collapse collapse <%= "in" if ["courses"].include?(params[:controller]) %>">
       <ul class="list-group">
         <% if teacher_logged_in? %>
-            <% semester_list=["2016年春季学期","2016年秋季学期"] %>
-            <% semester_list.each do | semester |%>
+            <% Semester.all.each do | semester |%>
             <li class="list-group-item">
-              <%= link_to semester_course_url(semester) do %>
-                  <span class="glyphicon glyphicon-chevron-right"></span> <%= semester %>
+              <%= link_to semester_course_url(semester.id) do %>
+                  <span class="glyphicon glyphicon-chevron-right"></span> <%= semester.info %>
               <% end %>
             </li>
             <% end %>
