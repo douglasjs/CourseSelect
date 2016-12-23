@@ -82,7 +82,6 @@ class CoursesController < ApplicationController
 
   def semester
     @course = current_user.teaching_courses.where(semester: params[:id])
-
   end
 
   #-------------------------for students----------------------
@@ -143,7 +142,7 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:course_code, :name, :course_type, :teaching_type, :exam_type,
-                                   :credit, :limit_num, :class_room, :course_time, :course_week, :semester)
+                                   :credit, :limit_num, :class_room, :course_time, :course_week, :semester_id)
   end
 
 

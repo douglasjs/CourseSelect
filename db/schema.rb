@@ -28,12 +28,14 @@ ActiveRecord::Schema.define(version: 20161222131755) do
     t.string   "class_room"
     t.string   "course_time"
     t.string   "course_week"
+    t.integer  "semester_id"
     t.integer  "teacher_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.boolean  "open",          default: false
-    t.string   "semester",      default: "2016年秋季学期"
   end
+
+  add_index "courses", ["semester_id"], name: "index_courses_on_semester_id", using: :btree
 
   create_table "grades", force: :cascade do |t|
     t.integer  "course_id"
@@ -50,6 +52,12 @@ ActiveRecord::Schema.define(version: 20161222131755) do
     t.string   "title"
     t.text     "text"
     t.string   "department"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "semesters", force: :cascade do |t|
+    t.string   "info",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
