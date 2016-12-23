@@ -159,7 +159,15 @@ GEM
     rdoc (4.2.2)
       json (~> 1.4)
     remotipart (1.3.0)
+    roo (2.5.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
+    roo-xls (1.0.0)
+      nokogiri
+      roo (>= 2.0.0beta1, < 3)
+      spreadsheet (> 0.9.0)
     ruby-ole (1.2.12)
+    rubyzip (1.2.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.6)
@@ -216,6 +224,8 @@ DEPENDENCIES
   rails (= 4.2.5.2)
   rails_12factor
   rails_admin (~> 0.8.1)
+  roo
+  roo-xls
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spreadsheet
