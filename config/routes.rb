@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'notices/index'
+  get 'notices/detail'
   get 'grades/export' =>"grades#export"
   post 'grades/import' =>"grades#import"
   # The priority is based upon order of creation: first created -> highest priority.

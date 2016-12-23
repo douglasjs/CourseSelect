@@ -3,4 +3,8 @@ class NoticesController < ApplicationController
     @notice = Notice.all.order("updated_at DESC")
   end
 
+  def detail
+    puts(params[:id])
+    @notice = Notice.find_by_id(params[:id])
+  end
 end
