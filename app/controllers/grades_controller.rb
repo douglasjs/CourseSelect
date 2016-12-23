@@ -29,14 +29,15 @@ class GradesController < ApplicationController
       file_ext = File.extname(file.original_filename)
       if not [".xls", ".xlsx"].include?(file_ext)
         flash={:danger => "失败，文件类型不支持"}
+      else
+        spreadsheet = (file_ext == ".xls") ? Roo::Excel.new(file.path) : Roo::Excelx.new(file.path)
+        header = spreadsheet.row(1)
+        (2..spreadsheet.last_row).each do |i|
+          @grade=Grade.find_by_id(spreadsheet.row(i)[0])
+          @grade.update_attributes!(:grade => spreadsheet.row(i)[6])
+        end
+        flash={:success => "上传成功"}
       end
-      spreadsheet = (file_ext == ".xls") ? Roo::Excel.new(file.path) : Roo::Excelx.new(file.path)
-      header = spreadsheet.row(1)
-      (2..spreadsheet.last_row).each do |i|
-        @grade=Grade.find_by_id(spreadsheet.row(i)[0])
-        @grade.update_attributes!(:grade => spreadsheet.row(i)[6])
-      end
-      flash={:success => "上传成功"}
       redirect_to grades_path(course_id: params[:course_id]), flash: flash
     end
   end
