@@ -28,10 +28,10 @@
             <% @notice.each do |notice| %>
                 <tr>
                   <td><%= notice.id %></td>
-                  <td><%= notice.title %></td>
+                  <td><%= link_to notice.title ,notices_detail_path(:id =>notice.id)%></td>
                   <td><%= notice.department %></td>
                   <td><%= notice.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-                  <td><%= notice.text %></td>
+                  <td><%= notice.text[0,10] %></td>
 
                 </tr>
             <% end %>
