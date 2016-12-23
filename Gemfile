@@ -1,6 +1,8 @@
 source 'http://gems.ruby-china.org'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'spreadsheet'
+gem 'roo'
+gem 'roo-xls'
 gem 'bootstrap-sass', '~> 3.3.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.11'
