@@ -1,0 +1,101 @@
+<div class="col-md-offset-1 col-sm-10">
+  <div class="panel panel-default ">
+    <div class="panel-body">
+      <h3 class="text-center"><%= @course.name %></h3>
+    </div>
+  </div>
+</div>
+<div class="panel-group" id="accordion">
+  <div class="col-md-offset-1 col-sm-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <span class="glyphicon glyphicon-align-justify" style="font-size:20px;color:primary">课程大纲</span>
+        </a>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <ul class="nav nav-tabs nav-justified">
+            <li ><%= link_to "课程详细信息" ,show_more_1_course_path(@course)%></li>
+            <li class="active"><%= link_to "课程章节安排" ,show_more_2_course_path(@course)%></li>
+            <li ><%= link_to "课程概况" ,show_more_3_course_path(@course)%></li>
+            <li ><%= link_to "课程特色" ,show_more_4_course_path(@course)%></li>
+          </ul>
+          <br/> <br/>
+          <div class="col-md-offset-1 col-sm-10">
+            <h3>主要内容</h3><br/>
+          第一部分：数据挖掘基础（9学时）<br/>
+          1.	网络数据挖掘的概念与发展简介（1学时）<br/>
+          1.1.	本课程介绍情况介绍<br/>
+          1.2.	网络数据挖掘简介<br/>
+          2.	关联规则（1学时）<br/>
+          2.1.	关联规则基本概念介绍<br/>
+          2.2.	Apriori算法<br/>
+          3.	监督学习（4学时）<br/>
+          3.1.	有监督学习问题定义、结果评价、应用场景<br/>
+          3.2.	决策树<br/>
+          3.3.	感知机与支持向量机<br/>
+          3.4.	集成学习（Boosting）<br/>
+          3.5.	结构化输出学习(structured output learning)<br/>
+          4.	无监督学习（3学时）<br/>
+          4.1.	无监督学习问题定义、评价<br/>
+          4.2.	K-Means算法、距离定义<br/>
+          4.3.	矩阵分解与话题模型（LSI、NMF）<br/>
+          4.4.	深度表达模型(word2vec)<br/>
+          第二部分：网络数据挖掘（27学时）<br/>
+          5.	推荐系统（9学时）<br/>
+          5.1.	推荐系统介绍<br/>
+          5.1.1.	推荐系统分类<br/>
+          5.1.2.	现实中的推荐系统<br/>
+          5.1.3.	推荐系统的评测<br/>
+          5.2.	推荐技术<br/>
+          5.2.1.	非个性化推荐<br/>
+          5.2.2.	基于内容的推荐<br/>
+          5.2.3.	用户间的协同过滤<br/>
+          5.2.4.	基于物品的推荐<br/>
+          5.3.	推荐系统进级<br/>
+          5.3.1.	冷启动问题<br/>
+          5.3.2.	单类系统过滤问题<br/>
+          5.3.3.	推荐中的信任模型<br/>
+          6.	图数据挖掘（9学时）<br/>
+          6.1.	图数据挖掘基础 (3学时)<br/>
+          6.1.1.	复杂网络<br/>
+          6.1.2.	网络结构特性<br/>
+          6.1.3.	PageRank算法<br/>
+          6.2.	图聚类（3学时）<br/>
+          6.2.1.	网络社区发现<br/>
+          6.2.2.	网络压缩表示<br/>
+          6.2.3.	随机分块模型<br/>
+          6.3.	网络建模和预测（3学时）<br/>
+          6.3.1.	网络链路预测<br/>
+          6.3.2.	用户表达学习<br/>
+          6.3.3.	信息传播预测<br/>
+          7.	互联网搜索与计算广告（9学时）<br/>
+          7.1.	信息检索系统介绍（1学时）<br/>
+          7.2.	传统排序模型（2学时）<br/>
+          7.2.1.	相关性排序：布尔模型、VSM、BM25、LM4IR<br/>
+          7.2.2.	多样化排序<br/>
+          7.3.	用于互联网搜索的排序学习（2学时）<br/>
+          7.3.1.	排序学习问题定义<br/>
+          7.3.2.	排序学习算法(point-wise/pair-wise/list-wise)<br/>
+          7.4.	查询-文档匹配（1学时）<br/>
+          7.4.1.	互联网搜索中的查询-文档失配问题<br/>
+          7.4.2.	基于隐空间的匹配模型<br/>
+          7.4.3.	最新进展（深度匹配模型）<br/>
+          7.5.	计算广告（3学时）<br/>
+          7.5.1.	计算广告问题介绍<br/>
+          7.5.2.	搜索广告与上下文广告<br/>
+          7.5.3.	程序化交易广告<br/>
+          7.5.4.	广告排序与定价<br/>
+          7.5.5.	点击率预估<br/>
+          第三部分：专题讲座（3学时）<br/>
+          8.	网络数据挖掘专题讲座<br/>
+          8.1.	拟邀请互联网企业研究人员讲座一次，关注于互联网企业应用网络数据挖掘算法解决实际问题的过程中所遇到的困难和解决方案<br/>
+            <br/> <br/> <br/> <br/> <br/> <br/>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

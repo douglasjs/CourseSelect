@@ -1,0 +1,37 @@
+<div class="col-md-offset-1 col-sm-10">
+  <div class="panel panel-default ">
+    <div class="panel-body">
+      <h3 class="text-center"><%= @course.name %></h3>
+    </div>
+  </div>
+</div>
+<div class="panel-group" id="accordion">
+  <div class="col-md-offset-1 col-sm-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <span class="glyphicon glyphicon-align-justify" style="font-size:20px;color:primary">课程大纲</span>
+        </a>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <ul class="nav nav-tabs nav-justified">
+            <li class="active"><%= link_to "课程详细信息" ,show_more_1_course_path(@course)%></li>
+            <li ><%= link_to "课程章节安排" ,show_more_2_course_path(@course)%></li>
+            <li ><%= link_to "课程概况" ,show_more_3_course_path(@course)%></li>
+            <li ><%= link_to "课程特色" ,show_more_4_course_path(@course)%></li>
+          </ul>
+          <br/> <br/>
+          <div class="col-md-offset-1 col-sm-10">
+          <h3>教学目的要求</h3><br/>
+          本课程为计算机科学与技术学科研究生的学科基础课。本课程主要讲解当今软件工程面临的新问题以及为解决这些问题的新技术发展，包括需求工程、软件设计、软件过程、软件质量等。通过本课程的学习，使学生能充分理解当今软件工程的最新发展，并增强实际系统设计的能力。
+          <br/><h3>预修课程</h3><br/>
+          程序设计方法、数据结构、数据库、软件工程
+          <br/><h3> 教材</h3><br/>
+          Ian Sommerville, 软件工程(第8版), 机械工业出版社，2007. (Software Engineering, 8th edition, Addison Wesley,2006)
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

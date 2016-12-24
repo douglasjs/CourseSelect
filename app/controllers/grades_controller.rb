@@ -15,7 +15,7 @@ class GradesController < ApplicationController
   def index
     if teacher_logged_in?
       @course=Course.find_by_id(params[:course_id])
-      @grades=@course.grades
+      @grades=@course.grades.where(:open=>false)
     elsif student_logged_in?
       @grades=current_user.grades
     else
