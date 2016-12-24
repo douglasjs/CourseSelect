@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
-
-  before_action :student_logged_in, only: [:select, :quit, :list]
-  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update, :open,:close,:selected,:chart]
+  include CoursesHelper
+  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4]
+  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
   before_action :logged_in, only: :index
 
   #-------------------------for teachers----------------------
@@ -25,6 +25,8 @@ class CoursesController < ApplicationController
     @course=Course.find_by_id(params[:id])
   end
 
+
+
   def update
     @course = Course.find_by_id(params[:id])
     if @course.update_attributes(course_params)
@@ -46,23 +48,22 @@ class CoursesController < ApplicationController
   def open
     @course = Course.find_by_id(params[:id])
     if @course.update_attributes(:open=>true)
-      flash ={:success => "已经成功开启该课程:#{ @course.name}"}
+      flash={:info => "开通成功"}
     else
-      flash ={:warning => '开通课程失败'}
+      flash={:warning => "开通失败"}
     end
-    redirect_to courses_path, flash: flash
+    redirect_to courses_path, flash: {success: "已经成功开通该课程:#{ @course.name}"}
   end
 
   def close
     @course = Course.find_by_id(params[:id])
     if @course.update_attributes(:open=>false)
-      flash={:success => "已经成功关闭该课程:#{ @course.name}"}
+      flash={:info => "关闭成功"}
     else
-      flash={:warning => '关闭课程失败'}
+      flash={:warning => "关闭失败"}
     end
-    redirect_to courses_path, flash: flash
+    redirect_to courses_path, flash: {success: "已经成功关闭该课程:#{ @course.name}"}
   end
-
   def selected
     @course = Course.find_by_id(params[:id])
     @student=@course.users
@@ -83,16 +84,35 @@ class CoursesController < ApplicationController
   def semester
     @course = current_user.teaching_courses.where(semester: params[:id])
   end
-
   #-------------------------for students----------------------
-
   def list
-    @course=Course.where(:open=>true)
-    #@course=Course.all
+    @course=Course.all
+    @q = Course.ransack(params[:q])
+    @course = @q.result.includes(:teacher)
+    @course = @q.result(distinct: true)
+    @course=@course.where(:open=>true)
     @course=@course-current_user.courses
+    @current_user_course=current_user.courses
+    @course_time_table = get_current_curriculum_table(@current_user_course)
+    @course_time = get_course_info(@course, 'course_time')
+    @course_exam_type = get_course_info(@course, 'exam_type')
+    @course_credit = get_course_info(@course, 'credit')
+    @course_type = get_course_info(@course, 'course_type')
+    @teaching_type = get_course_info(@course, 'teaching_type')
+    if request.post?
+      res = []
+      @course.each do |course|
+        if check_course_condition(course, 'course_time', params['course_time']) and
+            check_course_condition(course, 'exam_type', params['exam_type']) and
+            check_course_condition(course, 'course_type', params['course_type']) and
+            check_course_condition(course, 'credit', params['course_credit']) and
+            check_course_condition(course, 'teaching_type', params['teaching_type']) and
+          res << course
+        end
+        @course=res
+      end
+    end
   end
-
-
 
   def select
     @course=Course.find_by_id(params[:id])
@@ -101,13 +121,58 @@ class CoursesController < ApplicationController
     redirect_to courses_path, flash: flash
   end
 
+  def open_visit
+    @course=Course.find_by_id(params[:id])
+    current_user.courses<<@course
+    @grades=@course.grades
+    @grades.each do |grade|
+      if grade.user.name == current_user.name
+        grade.update_attributes(:open=>true)
+      end
+
+    end
+
+    flash={:success => "成功旁听课程: #{@course.name}"}
+    redirect_to courses_path, flash: flash
+  end
+
+  def swap
+    @course=Course.find_by_id(params[:id])
+    @current_user_course=current_user.courses
+      @current_user_course.each do |current_user_course|
+        if  current_user_course.course_time == @course.course_time
+          @info = current_user_course.name
+          current_user.courses.delete(current_user_course)
+          break
+    end
+      end
+    @course=Course.find_by_id(params[:id])
+    current_user.courses<<@course
+    flash={:success => "成功选择课程: #{@course.name} 成功退选课程: #{@info}"}
+    redirect_to courses_path, flash: flash
+  end
+
   def quit
-    @course=Course.find_by_id(params[:id])  #这边写错了
+    @course=Course.find_by_id(params[:id])
     current_user.courses.delete(@course)
     flash={:success => "成功退选课程: #{@course.name}"}
     redirect_to courses_path, flash: flash
   end
-
+  def show
+    @course=Course.find_by_id(params[:id])
+  end
+  def show_more_1
+    @course=Course.find_by_id(params[:id])
+  end
+  def show_more_2
+    @course=Course.find_by_id(params[:id])
+  end
+  def show_more_3
+    @course=Course.find_by_id(params[:id])
+  end
+  def show_more_4
+    @course=Course.find_by_id(params[:id])
+  end
 
   #-------------------------for both teachers and students----------------------
 
@@ -142,10 +207,8 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:course_code, :name, :course_type, :teaching_type, :exam_type,
-                                   :credit, :limit_num, :class_room, :course_time, :course_week, :semester_id)
+                                   :credit, :limit_num, :class_room, :course_time, :course_week)
   end
-
-
 
 
 end

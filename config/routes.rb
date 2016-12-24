@@ -23,16 +23,25 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
+      get :swap
       get :select
+      get :visitor
       get :quit
       get :open
       get :close
+      get :show_more_4
+      get :show_more_3
+      get :show_more_2
+      get :show_more_1
+      get :open_visit
+      get :close_visit
       get :selected
       get :chart
       get :semester
     end
     collection do
       get :list
+      post :list
     end
   end
 
