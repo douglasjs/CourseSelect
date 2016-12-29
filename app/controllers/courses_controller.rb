@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   include CoursesHelper
-  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4]
+  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4,:apply,:advise]
   before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
   before_action :logged_in, only: :index
 
@@ -172,6 +172,16 @@ class CoursesController < ApplicationController
   end
   def show_more_4
     @course=Course.find_by_id(params[:id])
+  end
+
+  def apply
+    @course=Course.find_by_id(params[:id])
+    @current_user = current_user
+  end
+
+  def advise
+    @course=Course.find_by_id(params[:id])
+    @current_user = current_user
   end
 
   #-------------------------for both teachers and students----------------------
