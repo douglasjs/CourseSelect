@@ -13,11 +13,13 @@ module CoursesHelper
     }
     param[week_data] + 1
   end
+  #生成11行7列的数据
   def get_current_curriculum_table(courses)
     course_time = Array.new(11) { Array.new(7, '') }
     courses.each do |cur|
       cur_time = String(cur.course_time)
-      end_j = cur_time.index('(')
+      cur_id = cur.course_time
+      end_j = cur_time.index('(')#index第一次出现的字节位置 end_j=2
       j = week_data_to_num(cur_time[0...end_j])
       t = cur_time[end_j + 1...cur_time.index(')')].split("-")
       for i in (t[0].to_i..t[1].to_i).each
@@ -26,6 +28,18 @@ module CoursesHelper
     end
     course_time
   end
+  #-----------------
+  def get_current_curriculum_id_table(courses)
+    course_id = Array.new(11) { Array.new(7, '') }
+    courses.each do |cur|
+      cur_id = cur.course_time
+      for i in (t[0].to_i..t[1].to_i).each
+        course_id[(i-1)*7/7][j-1] = cur.id
+      end
+    end
+    course_id
+  end
+
   def get_course_info(courses, type)
     res = Set.new
     courses.each do |course|
@@ -33,6 +47,7 @@ module CoursesHelper
     end
     res.to_a.sort
   end
+
   def check_course_condition(course, key, value)
     if value == '' or course[key] == value
       return true

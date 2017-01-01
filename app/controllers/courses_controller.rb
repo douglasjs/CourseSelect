@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   include CoursesHelper
-  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4]
+  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4, :timetable]
   before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
   before_action :logged_in, only: :index
 
@@ -134,6 +134,12 @@ class CoursesController < ApplicationController
 
     flash={:success => "成功旁听课程: #{@course.name}"}
     redirect_to courses_path, flash: flash
+  end
+
+  #------jq++显示课表--把已选的课程传给课表
+  def timetable
+    @course=current_user.courses
+    @course_time_table = get_current_curriculum_table(@course)#是一个二维数组当前课表
   end
 
   def swap

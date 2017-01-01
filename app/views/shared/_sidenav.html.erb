@@ -47,6 +47,12 @@
                   <span class="label label-info pull-right"><%= current_user.courses.length %></span>
               <% end %>
             </li>
+            <!jq++>
+            <li class="list-group-item">
+              <%= link_to timetable_course_url(@course) do %>
+                  <span class="glyphicon glyphicon-chevron-right"></span> 个人课表
+              <% end %>
+            </li>
         <% end %>
 
       </ul>
@@ -63,7 +69,7 @@
 
         <% if student_logged_in? %>
             <a data-toggle="collapse" data-parent="#accordion" href="#GradeCollapse"><span class="glyphicon glyphicon-user"></span>
-              所有成绩</a>
+              课程成绩</a>
         <% end %>
       </h4>
     </div>
