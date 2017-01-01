@@ -14,7 +14,7 @@
         <%= form_tag "/grades/import", multipart: true do %>
             <input type="hidden" value="<%=@course.id%>"  name="course_id">
             <%= file_field_tag :file %>
-            <%= submit_tag "导入", :class=> "btn"%>
+            <%= submit_tag "导入", :class=> "btn btn-success btn-xs"%>
             <% end %>
         <% end %>
         <div class="panel-body" style="min-height: 450px">
@@ -29,7 +29,7 @@
               <th>课程</th>
               <th>分数</th>
               <% if teacher_logged_in? %>
-                  <th><%= link_to "导出", grades_export_path(:course_id=>@course.id,:format => :xls) %>
+                  <th><%= link_to "导出", grades_export_path(:course_id=>@course.id,:format => :xls),class: "btn btn-success btn-xs" %>
 
                   </th>
 
@@ -63,5 +63,7 @@
     </div>
   </div>
 </div>
+
+
 
 
