@@ -6,8 +6,50 @@
 #
 one:
   name: 计算机体系结构
+  course_code: 091M4001H
+  course_type: 专业核心课
+  teaching_type: 课堂讲授为主
+  course_code: 091M4001H
+  credit: 60/3.0
+  limit_num: ""
+  course_week: 第2-20周
+  course_time: 周一(9-11)
+  semester: 2
+  class_room: 教1-107
+  teaching_type: 课堂讲授为主
+  exam_type: 闭卷笔试
+  teacher_id: 1
+  open: true
 
 # column: value
 #
-two: {}
+two:
+  course_code: "091M4002H"
+  name: "计算机网络"
+  course_type: "专业核心课"
+  credit: "60/3.0"
+  limit_num: ""
+  course_week: "第2-20周"
+  course_time: "周五(2-4)"
+  semester: 1
+  class_room: "教1-107"
+  teaching_type: "课堂讲授为主"
+  exam_type: "闭卷笔试"
+  teacher_id: 1
+  open: true
 #  column: value
+
+<% 30.times do |n| %>
+course_<%= n %>:
+  name:  <%= "User #{n}" %>
+  course_type: "专业核心课"
+  credit: "60/3.0"
+  limit_num: ""
+  course_week: "第2-20周"
+  course_time: "周五(2-4)"
+  semester: 1
+  class_room: "教1-107"
+  teaching_type: "课堂讲授为主"
+  exam_type: "闭卷笔试"
+  open: true
+<% end %>

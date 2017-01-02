@@ -20,6 +20,7 @@ rongtongjin:
   password_digest: <%= User.digest('password') %>
 
 teacherluo:
+  id: 1
   name: 罗铁坚
   email: teacher4@test.com
   teacher: true
