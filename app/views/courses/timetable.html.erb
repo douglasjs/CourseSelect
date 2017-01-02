@@ -33,7 +33,7 @@
                           <% if  @course_time_table[i][j]!=''  %>
                             <% if  @course_time_table[i][j].include? "_open"  %>
 
-                            <td class="warning", class='row<%= i+1 %> col<%=j+1%>'><p id="ss"><a href="#" rel="drevil"><%= @course_time_table[i][j].sub("_open", "") %></a></p></td>
+                            <td class="warning", class='row<%= i+1 %> col<%=j+1%>'><a href="#" data-toggle="popover" data-rights='<%= @course_time_table[i][j].sub("_open", "") %>' rel="drevil"><%= @course_time_table[i][j].sub("_open", "") %></a></td>
 
                               <% else %>
                               <td class="success",  class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j] %></td>
@@ -59,7 +59,10 @@
 //            title : '<div style="text-align:center; color:#7affce; text-decoration:underline; font-size:14px;">$(document).getElementById("ss")</div>', //this is the top title bar of the popover. add some basic css
             trigger: 'hover',
             container: 'body',
-            title: show(),
+            title: function() {
+              var data = $(this).data('rights');
+              return data;
+            },
             html: 'true', //needed to show html of course
             content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
             animation: false
@@ -67,7 +70,7 @@
             var _this = this;
             $(this).popover("show");
             $(this).siblings(".popover").on("mouseleave", function () {
-              // $(_this).popover('hide');
+               $(_this).popover('hide');
             });
         }).on("mouseleave", function () {
             var _this = this;
@@ -78,9 +81,4 @@
             }, 100);
         });
     });
-
-    function show() {
-        var x = document.getElementById("ss");
-        return x;
-    }
 </script>
