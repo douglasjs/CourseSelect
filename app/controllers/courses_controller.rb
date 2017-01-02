@@ -93,7 +93,7 @@ class CoursesController < ApplicationController
     @course=@course.where(:open=>true)
     @course=@course-current_user.courses
     @current_user_course=current_user.courses
-    @course_time_table = get_current_curriculum_table(@current_user_course)
+    @course_time_table = get_current_curriculum_table(@current_user_course, current_user)
     @course_time = get_course_info(@course, 'course_time')
     @course_exam_type = get_course_info(@course, 'exam_type')
     @course_credit = get_course_info(@course, 'credit')
@@ -139,7 +139,8 @@ class CoursesController < ApplicationController
   #------jq++显示课表--把已选的课程传给课表
   def timetable
     @course=current_user.courses
-    @course_time_table = get_current_curriculum_table(@course)#是一个二维数组当前课表
+    @user=current_user
+    @course_time_table = get_current_curriculum_table(@course,@user)#是一个二维数组当前课表
   end
 
   def swap

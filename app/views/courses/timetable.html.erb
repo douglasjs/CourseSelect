@@ -31,7 +31,13 @@
                   <td><%= i+1 %></td>
                   <% (0...@course_time_table[i].length).each do |j| %>
                           <% if  @course_time_table[i][j]!=''  %>
-                          <td bgcolor=#fffCD,  class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j] %></td>
+                            <% if  @course_time_table[i][j].include? "_open"  %>
+
+                            <td class="warning", class='row<%= i+1 %> col<%=j+1%>'><p id="ss"><a href="#" rel="drevil"><%= @course_time_table[i][j].sub("_open", "") %></a></p></td>
+
+                              <% else %>
+                              <td class="success",  class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j] %></td>
+                            <% end %>
                       <%else %>
                          <td class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j] %></td>
                       <%end %>
@@ -45,3 +51,36 @@
     </div>
   </div>
 </div>
+<script>
+    $(function(){
+        $("[rel=drevil]").popover({
+            trigger:'manual',
+            placement : 'top', //placement of the popover. also can use top, bottom, left or right
+//            title : '<div style="text-align:center; color:#7affce; text-decoration:underline; font-size:14px;">$(document).getElementById("ss")</div>', //this is the top title bar of the popover. add some basic css
+            trigger: 'hover',
+            container: 'body',
+            title: show(),
+            html: 'true', //needed to show html of course
+            content : '<div id="popOverBox"><img src="http://www.hd-report.com/wp-content/uploads/2008/08/mr-evil.jpg" width="251" height="201" /></div>', //this is the content of the html box. add the image here or anything you want really.
+            animation: false
+        }).on("mouseenter", function () {
+            var _this = this;
+            $(this).popover("show");
+            $(this).siblings(".popover").on("mouseleave", function () {
+              // $(_this).popover('hide');
+            });
+        }).on("mouseleave", function () {
+            var _this = this;
+            setTimeout(function () {
+                if (!$(".popover:hover").length) {
+                    $(_this).popover("hide")
+                }
+            }, 100);
+        });
+    });
+
+    function show() {
+        var x = document.getElementById("ss");
+        return x;
+    }
+</script>
