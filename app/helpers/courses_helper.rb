@@ -15,7 +15,8 @@ module CoursesHelper
   end
   #生成11行7列的数据
   def get_current_curriculum_table(courses,user)
-    course_time = Array.new(11) { Array.new(7, '') }
+    # course_time = Array.new(11) { Array.new(7, '') }
+    course_time = Array.new(11) {Array.new(7) {Array.new(3, '')}}
     courses.each do |cur|
       real_course_name = cur.name
       @grades = cur.grades
@@ -34,12 +35,27 @@ module CoursesHelper
       j = week_data_to_num(cur_time[0...end_j])
       t = cur_time[end_j + 1...cur_time.index(')')].split("-")
       for i in (t[0].to_i..t[1].to_i).each
-        course_time[(i-1)*7/7][j-1] = real_course_name
+        course_time[(i-1)*7/7][j-1][0] = real_course_name
+        course_time[(i-1)*7/7][j-1][1] = cur.course_week
+        course_time[(i-1)*7/7][j-1][2] = cur.class_room
       end
     end
     course_time
   end
 
+  def is_open_course(course, user)
+    @grades=course.grades
+    is_open = false
+    @grades.each do |grade|
+      if grade.user.name == user.name
+        if grade.open == true
+          is_open = true
+          break
+        end
+      end
+    end
+    is_open
+  end
 
   def get_course_info(courses, type)
     res = Set.new

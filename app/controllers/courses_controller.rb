@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   include CoursesHelper
-  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4, :timetable]
+  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4, :timetable, :is_open]
   before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
   before_action :logged_in, only: :index
 
@@ -136,11 +136,17 @@ class CoursesController < ApplicationController
     redirect_to courses_path, flash: flash
   end
 
+  def is_open
+    @course=Course.find_by_id(params[:id])
+    @is_open_course = is_open_course(@course, current_user)
+  end
+
   #------jq++显示课表--把已选的课程传给课表
   def timetable
     @course=current_user.courses
+
     @user=current_user
-    @course_time_table = get_current_curriculum_table(@course,@user)#是一个二维数组当前课表
+    @course_time_table = get_current_curriculum_table(@course,@user)#当前课表
   end
 
   def swap

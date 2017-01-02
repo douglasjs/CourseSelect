@@ -49,7 +49,7 @@
             </li>
             <!jq++>
             <li class="list-group-item">
-              <%= link_to timetable_course_url(@course) do %>
+              <%= link_to timetable_course_url(current_user.courses) do %>
                   <span class="glyphicon glyphicon-chevron-right"></span> 个人课表
               <% end %>
             </li>
