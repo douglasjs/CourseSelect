@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   include CoursesHelper
-  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4]
-  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update]
+  before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4,:apply,:advise, :timetable, :is_open]
+  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update,:chart,:selected]
   before_action :logged_in, only: :index
 
   #-------------------------for teachers----------------------
@@ -93,7 +93,7 @@ class CoursesController < ApplicationController
     @course=@course.where(:open=>true)
     @course=@course-current_user.courses
     @current_user_course=current_user.courses
-    @course_time_table = get_current_curriculum_table(@current_user_course)
+    @course_time_table = get_current_curriculum_table(@current_user_course, current_user)
     @course_time = get_course_info(@course, 'course_time')
     @course_exam_type = get_course_info(@course, 'exam_type')
     @course_credit = get_course_info(@course, 'credit')
@@ -136,6 +136,19 @@ class CoursesController < ApplicationController
     redirect_to courses_path, flash: flash
   end
 
+  def is_open
+    @course=Course.find_by_id(params[:id])
+    @is_open_course = is_open_course(@course, current_user)
+  end
+
+  #------jq++显示课表--把已选的课程传给课表
+  def timetable
+    @course=current_user.courses
+
+    @user=current_user
+    @course_time_table = get_current_curriculum_table(@course,@user)#当前课表
+  end
+
   def swap
     @course=Course.find_by_id(params[:id])
     @current_user_course=current_user.courses
@@ -172,6 +185,16 @@ class CoursesController < ApplicationController
   end
   def show_more_4
     @course=Course.find_by_id(params[:id])
+  end
+
+  def apply
+    @course=Course.find_by_id(params[:id])
+    @current_user = current_user
+  end
+
+  def advise
+    @course=Course.find_by_id(params[:id])
+    @current_user = current_user
   end
 
   #-------------------------for both teachers and students----------------------

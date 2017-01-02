@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
+      get :is_open
+      get :timetable
       get :swap
       get :select
       get :visitor
@@ -38,6 +40,8 @@ Rails.application.routes.draw do
       get :selected
       get :chart
       get :semester
+      get :apply
+      get :advise
     end
     collection do
       get :list
@@ -47,6 +51,11 @@ Rails.application.routes.draw do
 
   resources :grades, only: [:index, :update]
   resources :users
+  resources :emails do
+    member do
+      post :create
+    end
+  end
 
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
