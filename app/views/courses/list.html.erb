@@ -85,9 +85,14 @@
                   <%  credit = 0 %>
                   <%  time = 0 %>
                   <% @current_user_course.each do |current_user_course| %>
-                      <%  credit =  credit + current_user_course.credit.split('/').at(1).to_i  %>
-                      <%  time =  time + current_user_course.credit.split('/').at(0).to_i  %>
-                      <%end%>
+                      <% @is_open_course = is_open_course(current_user_course, current_user) %>
+                      <%if @is_open_course==true %>
+                          <%  credit =  credit + current_user_course.credit.split('/').at(1).to_i  %>
+                          <%  time =  time + current_user_course.credit.split('/').at(0).to_i  %>
+                      <% else %>
+                          <span class="label label-danger"></span>
+                      <% end %>
+                      <% end %>
                   <% @course.each do |course| %>
                       <%  flag1 = true %>
                       <%  flag2 = true %>

@@ -45,16 +45,15 @@ module CoursesHelper
 
   def is_open_course(course, user)
     @grades=course.grades
-    is_open = false
+    @is_open = false
     @grades.each do |grade|
       if grade.user.name == user.name
-        if grade.open == true
-          is_open = true
-          break
-        end
+         if grade.open == true
+          @is_open = true
+         end
       end
     end
-    is_open
+    return @is_open
   end
 
   def get_course_info(courses, type)

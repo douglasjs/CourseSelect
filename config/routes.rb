@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
-      get :is_open
       get :timetable
       get :swap
       get :select
