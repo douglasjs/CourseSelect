@@ -56,7 +56,14 @@ Rails.application.routes.draw do
       post :create
     end
   end
-
+  resources :comments do
+    member do
+      get :semester
+    end
+    collection do
+      get :list
+    end
+  end
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
   delete 'sessions/logout' => 'sessions#destroy'

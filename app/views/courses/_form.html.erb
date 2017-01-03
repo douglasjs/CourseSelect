@@ -91,7 +91,78 @@
         </div>
       </div>
     </div>
-
+    <div class="form-group">
+      <%= f.label "课程难易程度", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_difficulty, class: 'form-control', placeholder: "输入课程难易程度" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "课程适应人群", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_suit, class: 'form-control', placeholder: "输入课程适应人群" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "课程大纲", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_outline, class: 'form-control', placeholder: "输入课程大纲" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "课程考试详情", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_exam_details, class: 'form-control', placeholder: "输入课程考试详情" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "课程章节信息", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_chapter, class: 'form-control', placeholder: "输入课程章节信息" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "是否开通直播", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_live, class: 'form-control', placeholder: "输入是否开通直播" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "是否有课堂作业", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_homework, class: 'form-control', placeholder: "输入是否有课堂作业" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "是否有组队作业", class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+        <div class="input-group">
+          <div class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></div>
+          <%= f.text_field :course_teamwork, class: 'form-control', placeholder: "输入是否有组队作业" %>
+        </div>
+      </div>
+    </div>
     <div class="form-group">
       <%= f.label "上课学期", class: 'col-sm-3 control-label' %>
       <div class="col-sm-9">
