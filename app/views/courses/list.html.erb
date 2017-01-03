@@ -218,15 +218,7 @@
                                                       <tr>
                                                         <td><%= i+1 %></td>
                                                         <% (0...@course_time_table[i].length).each do |j| %>
-                                                            <% if  @course_time_table[i][j][0]!=''  %>
-                                                                <% if  @course_time_table[i][j][0].include? "_open"  %>
-                                                                    <td class="warning",  class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j][0].sub("_open", "") %><span class="label label-info pull-right">旁听</span></td>
-                                                                <% else %>
-                                                                    <td class="success",  class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j][0] %></td>
-                                                                <% end %>
-                                                            <%else %>
-                                                                <td class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j][0] %></td>
-                                                            <%end %>
+                                                            <td class='row<%= i+1 %> col<%=j+1%>'><%= @course_time_table[i][j] %></td>
                                                         <% end %>
                                                       </tr>
                                                   <% end %>
@@ -269,5 +261,7 @@
     location.reload()
     setTimeout(function(){window.location.href=url},0)
   }
+
+
 </script>
 
