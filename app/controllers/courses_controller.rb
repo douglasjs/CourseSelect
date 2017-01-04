@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   include CoursesHelper
   before_action :student_logged_in, only: [:select, :quit, :list, :show, :show_more_4,:apply,:advise, :timetable, :is_open]
-  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update,:chart,:selected]
+  before_action :teacher_logged_in, only: [:new, :create, :edit, :destroy, :update,:chart,:selected,:semester]
   before_action :logged_in, only: :index
 
   #-------------------------for teachers----------------------

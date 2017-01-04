@@ -110,7 +110,6 @@ class CommentsController < ApplicationController
         @i+=1
       end
      @comments_score_sum /= 17
-     @course.course_score=@comments_score_sum
   end
 
   def index
