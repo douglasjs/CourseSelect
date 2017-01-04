@@ -3,10 +3,6 @@ gradeone:
   user: rongtongjin
   grade: 60
 
-gradetwo:
-  course: two
-  user: rongtongjin
-
 gradethree:
   course: three
   user: rongtongjin

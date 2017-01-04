@@ -22,7 +22,7 @@ class EmailsController < ApplicationController
     message=Emails.index(@sender,@recipient,@subject,@body,@recipient_email)
     message.deliver
     return if request.xhr?
-    redirect_to courses_path,flash:{:success => "发送成功"}
+    redirect_to list_courses_path,flash:{:success => "发送成功"}
   end
 
 end
