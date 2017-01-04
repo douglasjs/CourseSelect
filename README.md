@@ -1,7 +1,7 @@
 # CourseSelect [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
  本项目依托于https://github.com/PENGZhaoqing/CourseSelect 进行开发
  
- Heroku演示地址（https://aqueous-cove-63128.herokuapp.com/）
+ Heroku演示地址（https://aqueous-cove-63128.herokuapp.com/ ）
 
 ### 目前功能：
 **原系统功能**
@@ -51,7 +51,7 @@ _学生功能_
 
 <img src="/lib/screenshot14.png" width="700">
 
-<img src="/lib/screenshot15.png" width="700">
+<img src="/lib/screenshot5.png" width="700">
 
 ## 说明
 
