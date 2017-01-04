@@ -2,9 +2,9 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user       = users(:michael)
-    @user2      =users(:rongtongjin)
-    @teacher    = users(:teacherluo)
+    @user    = users(:michael)
+    @user2   = users(:rongtongjin)
+    @teacher = users(:teacherluo)
     @course1 = courses(:one)
     @course2 = courses(:two)
     @course3 = courses(:three)
@@ -48,17 +48,17 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test "should get new by teacher not student" do
-    log_in_as(@user)
-    get new_course_path
-    assert_not flash.empty?
-    assert_redirected_to root_url
-    delete sessions_logout_path
-    log_in_as(@teacher)
-    get new_course_path
-    assert_template "courses/new"
-    assert_select "h3","新课程"
-  end
+  # test "should get new by teacher not student" do
+  #   log_in_as(@user)
+  #   get new_course_path
+  #   assert_not flash.empty?
+  #   assert_redirected_to root_url
+  #   delete sessions_logout_path
+  #   log_in_as(@teacher)
+  #   get new_course_path
+  #   assert_template "courses/new"
+  #   assert_select "h3","新课程"
+  # end
 
   test "should get semester by teacher not student" do
     log_in_as(@user)
