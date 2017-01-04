@@ -1,6 +1,7 @@
 # CourseSelect [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
- 本项目依托于https://github.com/PENGZhaoqing/CourseSelect进行开发
- 演示地址（https://aqueous-cove-63128.herokuapp.com/）
+ 本项目依托于https://github.com/PENGZhaoqing/CourseSelect 进行开发
+ 
+ Heroku演示地址（https://aqueous-cove-63128.herokuapp.com/）
 
 ### 目前功能：
 **原系统功能**
@@ -12,10 +13,11 @@
 * 管理员后台
 
 **本系统新添功能**
-管理员功能
+
+_管理员功能_
 * 管理员发布公告
 
-教师功能
+_教师功能_
 * 新闻主页
 * 查看公告列表
 * 公告详情页
@@ -25,7 +27,7 @@
 * 增加选课的开放、关闭功能
 * Excel格式的数据导入、导出
 
-学生功能
+_学生功能_
 * 新闻主页
 * 查看公告列表
 * 通知详情页
@@ -41,13 +43,15 @@
 
 ### 截图
 
-<img src="/lib/screenshot1.png" width="700">  
+<img src="/lib/screenshot11.png" width="700">  
 
-<img src="/lib/screenshot2.png" width="700">
+<img src="/lib/screenshot12.png" width="700">
 
-<img src="/lib/screenshot3.png" width="700">   
+<img src="/lib/screenshot13.png" width="700">   
 
-<img src="/lib/screenshot4.png" width="700">
+<img src="/lib/screenshot14.png" width="700">
+
+<img src="/lib/screenshot15.png" width="700">
 
 ## 说明
 
@@ -64,7 +68,9 @@
 
 ## 安装
 本组成员所整理的本地环境安装教程
+
 Ubuntu下安装Ruby on Rails环境教程及问题汇总[请戳这里](http://www.jinqiao.name/2016/12/28/no-rakefile-found-looking-for-rakefile-rakefile-rakefile-rb-rakefile-rb/)
+
 Win10上安装Ruby on Rails全教程[请戳这里](http://www.jinqiao.name/2016/12/29/windows%E4%B8%8A%E5%AE%89%E8%A3%85ruby-on-rails/)
 
 在终端中执行以下代码
@@ -149,17 +155,32 @@ Finished in 1.202169s, 7.4865 runs/s, 16.6366 assertions/s.
 ## 功能更新
 
 2016/12/20   增加图表展示功能
+
 2016/12/21   课程多样化显示
+
 2016/12/24   增加课程公告
+
 2016/12/26   增加课程检索功能
+
 2016/12/26   更新了主页
+
 2016/12/28   智能提醒课程冲突
+
 2016/12/28   增加学期功能
+
 2016/12/29   增加旁听
+
 2016/12/31   增加选课人数动态更新
+
 2016/12/31   增加申请加课功能
+
 2017/01/01   增加个人课表功能
+
 2017/01/01   增加课程或学生信息导入导出
+
 2017/01/02   评教功能 
+
 2017/01/03   更新旁听及学分统计功能
+
+2017/01/03   更新系统说明，加入站长工具
 
