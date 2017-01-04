@@ -1,8 +1,21 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: postgres://omzhmaxbxipwcd:80cb9baff8354e86e86707125d9ef49966a66cd0b8377756aa91372599feeb1d@ec2-184-72-252-69.compute-1.amazonaws.com:5432/d4rss0c3qd4qai
-  
+  username: postgres
+  password: 161240122
   pool: 5
-  timeout: 5000
 
+development:
+  <<: *default
+  database: courseselect_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: courseselect_test
+
+production:
+  <<: *default
+  database: courseselect_developement

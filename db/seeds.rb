@@ -59,6 +59,19 @@ User.create(
     admin: true
 )
 
+notice_map={
+    1 => {title:"中秋节放假课程调整说明",text:"2016年9月15日（星期四，中秋节）至9月17日（星期六）放假调休，共3天，9月16日（星期五）的课程调整至9月18日（星期日），9月17日（星期六）正常公休。放假期间的课程顺延或择时补课。",department:"教务处"},
+    2=> {title:"中国科学院大学2016年国庆节放假及调课通知", text:"2016年10月1日（星期六）至10月7日（星期五）放假调休，共7天，10月8日(星期六)、10月9日(星期日)上课。", department:"教务处"},
+    3=> {title:"放假", text:"1月14日开始", department:"教务处"}
+}
+notice_map.keys.each do |index|
+  notice=Notice.create!(
+      title: notice_map[index][:title],
+      text: notice_map[index][:text],
+      department: notice_map[index][:department],
+
+  )
+  end
 teacher_map={
     1 => {name: "胡伟武", department: "计算技术研究所"},
     2 => {name: "谢高岗", department: "计算机与控制学院"},
