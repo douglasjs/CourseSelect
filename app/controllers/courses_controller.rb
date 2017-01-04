@@ -136,15 +136,11 @@ class CoursesController < ApplicationController
     redirect_to courses_path, flash: flash
   end
 
-  def is_open
-    @course=Course.find_by_id(params[:id])
-    @is_open_course = is_open_course(@course, current_user)
-  end
-
-  #------jq++显示课表--把已选的课程传给课表
+  #------显示课表--把已选的课程传给课表
   def timetable
     @course=current_user.courses
-
+    @course_credit = get_course_info(@course, 'credit')
+    @current_user_course=current_user.courses
     @user=current_user
     @course_time_table = get_current_curriculum_table(@course,@user)#当前课表
   end
@@ -201,9 +197,13 @@ class CoursesController < ApplicationController
 
   def index
     @course=current_user.teaching_courses if teacher_logged_in?
-    @course=current_user.courses if student_logged_in?
+    if student_logged_in?
+      @course=current_user.courses
+      #@course.each do |course|
+         # @is_open_course = is_open_course(course, current_user)
+      #end
+    end
   end
-
 
   private
 
