@@ -19,7 +19,7 @@
           <%  time = 0 %>
           <% @current_user_course.each do |current_user_course| %>
                 <% @is_open_course = is_open_course(current_user_course, current_user) %>
-                <%if @is_open_course==true %>
+                <%if @is_open_course==false %>
                     <%  credit =  credit + current_user_course.credit.split('/').at(1).to_i  %>
                     <%  time =  time + current_user_course.credit.split('/').at(0).to_i  %>
                 <% else %>
