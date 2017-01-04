@@ -43,15 +43,15 @@ _学生功能_
 
 ### 截图
 
-<img src="/lib/screenshot1.png" width="700">  
+<img src="/lib/screenshot11.png" width="700">  
 
-<img src="/lib/screenshot2.png" width="700">
+<img src="/lib/screenshot12.png" width="700">
 
-<img src="/lib/screenshot3.png" width="700">   
+<img src="/lib/screenshot13.png" width="700">   
 
-<img src="/lib/screenshot4.png" width="700">
+<img src="/lib/screenshot14.png" width="700">
 
-<img src="/lib/screenshot5.png" width="700">
+<img src="/lib/screenshot15.png" width="700">
 
 ## 说明
 
