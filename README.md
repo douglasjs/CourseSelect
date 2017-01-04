@@ -47,7 +47,7 @@ Test
 在终端（MacOS或Linux）中执行以下代码
 
 ```
-$ git clone https://github.com/PENGZhaoqing/CourseSelect
+$ git clone https://github.com/RongtongJin/CourseSelect
 $ cd CourseSelect
 $ bundle install
 $ rake db:migrate
@@ -96,6 +96,14 @@ $ rails s
 5.运行`heroku login`在终端登陆，检查与heroku app的远程连接情况`git config --list | grep heroku`，若未检查到相应的app，请看[这里](http://stackoverflow.com/questions/5129598/how-to-link-a-folder-with-an-existing-heroku-app)
 
 6.运行部署，详情[请戳这里](https://devcenter.heroku.com/articles/getting-started-with-rails4#rails-asset-pipeline)
+
+```
+git push heroku master
+heroku run rake db:migrate
+heroku run rake db:seed
+```
+
+
 
 
 ## 测试
