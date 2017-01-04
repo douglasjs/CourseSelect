@@ -130,6 +130,7 @@ $ rails s
 git push heroku master
 heroku run rake db:migrate
 heroku run rake db:seed
+heroku run rake db:reset
 ```
 
 
