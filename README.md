@@ -1,5 +1,5 @@
 # CourseSelect [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
- 本项目依托于https://github.com/PENGZhaoqing/CourseSelect进行开发
+ 本项目依托于https://github.com/PENGZhaoqing/CourseSelect 进行开发
  
  Heroku演示地址（https://aqueous-cove-63128.herokuapp.com/）
 
