@@ -13,7 +13,24 @@
         </div>
 
         <div class="panel-body" style="min-height: 0px">
-
+          <table class="table table-striped">
+            <thead>
+          <%  credit = 0 %>
+          <%  time = 0 %>
+          <% @current_user_course.each do |current_user_course| %>
+                <% @is_open_course = is_open_course(current_user_course, current_user) %>
+                <%if @is_open_course==false %>
+                    <%  credit =  credit + current_user_course.credit.split('/').at(1).to_i  %>
+                    <%  time =  time + current_user_course.credit.split('/').at(0).to_i  %>
+                <% else %>
+                    <span class="label label-danger"></span>
+                <% end %>
+            <% end %>
+          <td></td>
+          <tr> <td class ="alert alert-info">你当前的所修课程学分为 <%= credit %> 学分；你当前的所修课程学时为 <%= time %> 学时 <span class ="label label-danger">不含旁听 </span></tr>
+          <td></td>
+            </thead>
+          </table>
           <table class="table table-striped table-hover">
             <thead>
             <td></td>
@@ -44,6 +61,7 @@
                       <%end %>
                   <% end %>
                 </tr>
+
             <% end %>
             </tbody>
           </table>

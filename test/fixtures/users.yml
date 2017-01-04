@@ -20,10 +20,23 @@ rongtongjin:
   password_digest: <%= User.digest('password') %>
 
 teacherluo:
-  id: 1
   name: 罗铁坚
   email: teacher4@test.com
   teacher: true
   department: 计算机与控制学院
   password_digest: <%= User.digest('password') %>
 
+teacherhu:
+  name: 胡伟武
+  email: teacher5@test.com
+  teacher: true
+  department: 计算机与控制学院
+  password_digest: <%= User.digest('password') %>
+
+<% (0..45).each do |n| %>
+student_<%= n %>:
+  name: <%= "user#{n}" %>
+  email: <%= "user#{n}@example.com" %>
+  department: 计算机与控制学院
+  password_digest: <%= User.digest('password') %>
+<% end %>

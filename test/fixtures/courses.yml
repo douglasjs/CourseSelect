@@ -14,42 +14,44 @@ one:
   limit_num: ""
   course_week: 第2-20周
   course_time: 周一(9-11)
-  semester: 2
+  semester: Autumn2016
   class_room: 教1-107
   teaching_type: 课堂讲授为主
   exam_type: 闭卷笔试
-  teacher_id: 1
+  teacher: teacherhu
   open: true
 
 # column: value
 #
 two:
   course_code: "091M4002H"
+  name: "高级软件工程"
+  course_type: "专业核心课"
+  credit: "60/3.0"
+  limit_num: ""
+  course_week: "第2-20周"
+  course_time: "周五(2-4)"
+  semester: Autumn2016
+  class_room: "教1-107"
+  teaching_type: "课堂讲授为主"
+  exam_type: "闭卷笔试"
+  teacher: teacherluo
+  open: true
+#  column: value
+
+three:
+  course_code: "091M4003H"
   name: "计算机网络"
   course_type: "专业核心课"
   credit: "60/3.0"
   limit_num: ""
   course_week: "第2-20周"
   course_time: "周五(2-4)"
-  semester: 1
+  semester: Autumn2016
   class_room: "教1-107"
   teaching_type: "课堂讲授为主"
   exam_type: "闭卷笔试"
-  teacher_id: 1
+  teacher: teacherluo
   open: true
-#  column: value
 
-<% 30.times do |n| %>
-course_<%= n %>:
-  name:  <%= "User #{n}" %>
-  course_type: "专业核心课"
-  credit: "60/3.0"
-  limit_num: ""
-  course_week: "第2-20周"
-  course_time: "周五(2-4)"
-  semester: 1
-  class_room: "教1-107"
-  teaching_type: "课堂讲授为主"
-  exam_type: "闭卷笔试"
-  open: true
-<% end %>
+

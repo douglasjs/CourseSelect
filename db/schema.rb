@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224130225) do
+ActiveRecord::Schema.define(version: 20170103050207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.integer  "item_one"
+    t.integer  "item_two"
+    t.integer  "item_three"
+    t.integer  "item_four"
+    t.integer  "item_five"
+    t.integer  "item_six"
+    t.integer  "item_seven"
+    t.integer  "item_eight"
+    t.integer  "item_nine"
+    t.integer  "item_ten"
+    t.integer  "item_eleven"
+    t.integer  "item_twelve"
+    t.integer  "item_thirteen"
+    t.integer  "item_fourteen"
+    t.integer  "item_fifteen"
+    t.integer  "item_sixteen"
+    t.integer  "item_seventeen"
+    t.text     "comment_advantage"
+    t.text     "comment_disadvantage"
+    t.boolean  "commented",            default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "comments", ["course_id"], name: "index_comments_on_course_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -24,15 +54,24 @@ ActiveRecord::Schema.define(version: 20161224130225) do
     t.string   "exam_type"
     t.string   "credit"
     t.integer  "limit_num"
-    t.integer  "student_num",   default: 0
+    t.integer  "student_num",         default: 0
     t.string   "class_room"
     t.string   "course_time"
     t.string   "course_week"
+    t.string   "course_difficulty"
+    t.string   "course_suit"
+    t.string   "course_score"
+    t.text     "course_outline"
+    t.text     "course_exam_details"
+    t.text     "course_chapter"
+    t.string   "course_live"
+    t.string   "course_homework"
+    t.string   "course_teamwork"
     t.integer  "semester_id"
     t.integer  "teacher_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.boolean  "open",          default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "open",                default: false
   end
 
   add_index "courses", ["semester_id"], name: "index_courses_on_semester_id", using: :btree

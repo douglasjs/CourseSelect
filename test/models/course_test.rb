@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CourseTest < ActiveSupport::TestCase
   def setup
-    @semester=semesters(:first_semester)
+    @semester=semesters(:Autumn2016)
     @course=Course.new(name:"Example Course",
                        course_code: "091M4002H",
                         course_type: "专业核心课",

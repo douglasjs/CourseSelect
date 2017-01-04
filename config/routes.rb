@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
-      get :is_open
       get :timetable
       get :swap
       get :select
@@ -54,6 +53,14 @@ Rails.application.routes.draw do
   resources :emails do
     member do
       post :create
+    end
+  end
+  resources :comments do
+    member do
+      get :semester
+    end
+    collection do
+      get :list
     end
   end
 
