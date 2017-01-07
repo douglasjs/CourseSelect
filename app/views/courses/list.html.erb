@@ -201,7 +201,7 @@
                                   </div>
                                   </td>
                                   <% if course.limit_num==course.grades.where(:open=>false).length %>
-                                      <td><%= link_to "申请加课", apply_course_path(course), class: 'btn-sm btn-info' %></td>
+                                      <td><%= link_to "申请增加限选人数", apply_course_path(course), class: 'btn-sm btn-info' %></td>
                                   <% end %>
                                 </tr>
                                 <tr>

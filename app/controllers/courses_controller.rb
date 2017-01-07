@@ -12,6 +12,8 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+    @course.course_score="暂无评分"
+    #@course.update_attributes(:course_score=>"暂无评分")
     @semester=Semester.where(:is_open=>true)
     if @semester==nil||@semester.count>1
       redirect_to courses_path, flash: {success: "暂时不能创建课程课"}
