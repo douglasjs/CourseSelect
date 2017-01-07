@@ -1,6 +1,6 @@
 # CourseSelect [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
  本项目依托于https://github.com/PENGZhaoqing/CourseSelect 进行开发
- 
+
  Heroku演示地址（https://aqueous-cove-63128.herokuapp.com/ ）
 
 ### 目前功能：
@@ -40,6 +40,7 @@ _学生功能_
 * 增加选课的开放、关闭功能
 * 绑定用户邮箱
 * 发送通知申请加课
+* 选课系统与评教系统关联
 
 ### 截图
 
@@ -192,3 +193,6 @@ Finished in 1.202169s, 7.4865 runs/s, 16.6366 assertions/s.
 
 2017/01/03   更新系统说明，加入站长工具
 
+2017/01/05   更新评教系统
+
+2017/01/07   评教系统与选课系统关联
