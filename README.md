@@ -1,33 +1,57 @@
 # CourseSelect [![Build Status](https://travis-ci.org/PENGZhaoqing/CourseSelect.svg?branch=master)](https://travis-ci.org/PENGZhaoqing/CourseSelect)
-Test
-这个样本系统是基于国科大研究生课程 (高级软件工程) 开发的项目,目的是帮助入门者学习RoR (Ruby on Rails) 
-
-适合新学者的入手的第一个项目 ([演示Demo戳这里](https://courseselect.herokuapp.com/ ))，入门者可以在这个样本系统上增加更多的功能:
-
-* 处理选课冲突、控制选课人数
-* 统计选课学分，学位课等
-* 增加选课的开放、关闭功能
-* 自定义管理员后台
-* 基于OAuth的授权登陆
-* Excel格式的数据导入
+ 本项目依托于https://github.com/PENGZhaoqing/CourseSelect 进行开发
+ 
+ Heroku演示地址（https://aqueous-cove-63128.herokuapp.com/ ）
 
 ### 目前功能：
-
+**原系统功能**
 * 多角色登陆（学生，老师，管理员）
 * 学生动态选课，退课
 * 老师动态增加，删除课程
 * 老师对课程下的学生添加、修改成绩
 * 权限控制：老师和学生只能看到自己相关课程信息
+* 管理员后台
+
+**本系统新添功能**
+
+_管理员功能_
+* 管理员发布公告
+
+_教师功能_
+* 新闻主页
+* 查看公告列表
+* 公告详情页
+* 图形化显示选课学生信息
+* 查看学生评价
+* 教师按学期开课
+* 增加选课的开放、关闭功能
+* Excel格式的数据导入、导出
+
+_学生功能_
+* 新闻主页
+* 查看公告列表
+* 通知详情页
+* 处理选课冲突
+* 站内查找检索 （课程按分类查找，过滤等）
+* 统计选课学分，学时
+* 个人课表
+* 选课旁听功能
+* 课程评估
+* 增加选课的开放、关闭功能
+* 绑定用户邮箱
+* 发送通知申请加课
 
 ### 截图
 
-<img src="/lib/screenshot1.png" width="700">  
+<img src="/lib/screenshot11.png" width="700">  
 
-<img src="/lib/screenshot2.png" width="700">
+<img src="/lib/screenshot12.png" width="700">
 
-<img src="/lib/screenshot3.png" width="700">   
+<img src="/lib/screenshot13.png" width="700">   
 
-<img src="/lib/screenshot4.png" width="700">
+<img src="/lib/screenshot14.png" width="700">
+
+<img src="/lib/screenshot5.png" width="700">
 
 ## 说明
 
@@ -43,11 +67,16 @@ Test
 
 
 ## 安装
+本组成员所整理的本地环境安装教程
 
-在终端（MacOS或Linux）中执行以下代码
+Ubuntu下安装Ruby on Rails环境教程及问题汇总[请戳这里](http://www.jinqiao.name/2016/12/28/no-rakefile-found-looking-for-rakefile-rakefile-rakefile-rb-rakefile-rb/)
+
+Win10上安装Ruby on Rails全教程[请戳这里](http://www.jinqiao.name/2016/12/29/windows%E4%B8%8A%E5%AE%89%E8%A3%85ruby-on-rails/)
+
+在终端中执行以下代码
 
 ```
-$ git clone https://github.com/PENGZhaoqing/CourseSelect
+$ git clone https://github.com/RongtongJin/CourseSelect
 $ cd CourseSelect
 $ bundle install
 $ rake db:migrate
@@ -97,13 +126,21 @@ $ rails s
 
 6.运行部署，详情[请戳这里](https://devcenter.heroku.com/articles/getting-started-with-rails4#rails-asset-pipeline)
 
+```
+git push heroku master
+heroku run rake db:migrate
+heroku run rake db:seed
+```
+
+
+
 
 ## 测试
 
 本项目包含了部分的测试（integration/fixture/model test），测试文件位于/test目录下。运行测试：
 
 ```
-PENG-MacBook-Pro:IMS_sample PENG-mac$ rake test
+$ rake test
 Run options: --seed 15794
 
 # Running:
@@ -125,5 +162,33 @@ Finished in 1.202169s, 7.4865 runs/s, 16.6366 assertions/s.
 
 ## 功能更新
 
-2016/12/20    组长金融通    更新图表展示功能
-2016/12/21    组长金融通    更新学期功能
+2016/12/20   增加图表展示功能
+
+2016/12/21   课程多样化显示
+
+2016/12/24   增加课程公告
+
+2016/12/26   增加课程检索功能
+
+2016/12/26   更新了主页
+
+2016/12/28   智能提醒课程冲突
+
+2016/12/28   增加学期功能
+
+2016/12/29   增加旁听
+
+2016/12/31   增加选课人数动态更新
+
+2016/12/31   增加申请加课功能
+
+2017/01/01   增加个人课表功能
+
+2017/01/01   增加课程或学生信息导入导出
+
+2017/01/02   评教功能 
+
+2017/01/03   更新旁听及学分统计功能
+
+2017/01/03   更新系统说明，加入站长工具
+

@@ -11,8 +11,8 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find_by_id(params[:id])
     if @comment.update_attributes(comment_params)
+      @comment.commented = true
       if @comment.save
-        @comment.commented = true
         flash={:success => "#{@comment.course.name}已评估"}
         redirect_to comments_path, flash: flash
       else
@@ -110,10 +110,10 @@ class CommentsController < ApplicationController
         @i+=1
       end
      @comments_score_sum /= 17
-     @course.course_score=@comments_score_sum
   end
 
   def index
+    @courses=current_user.courses if student_logged_in?
     @comments=current_user.comments if student_logged_in?
     @course=current_user.teaching_courses if teacher_logged_in?
     @comments=@course.comments if teacher_logged_in?

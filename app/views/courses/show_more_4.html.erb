@@ -24,10 +24,7 @@
           <table class="table">
 
             <h3> <b>作业、考核方式与成绩评定</b></h3><br/>
-            考核采取平时考核与考试相结合的方式。平时成绩为40%，考试为60%。<br/>
-            <b>平时成绩包括（40%）</b>：4次作业（各为5%）、1次大作业（20%）、课堂纪律、考勤、讨论等。<br/>
-            <b>闭卷考试包括（60%）</b>：分别针对数据挖掘基础（20%）、推荐系统（10%）、社交网络（10%）、互联网搜索（10%）、互联网广告（10%）5个方面。<br/>
-            首次课程时，明确作业纪律、考试纪律、打分标准。力求考核严格、公正、透明。<br/>
+            <%= @course.course_exam_details %>
             <br/><br/>
             <h3> <b>课程特点</b></h3>
             <thead>
@@ -47,19 +44,19 @@
               <td>2016年秋季学期</td></tr>
             <tr class="warning">
               <td>课程是否有直播</td>
-              <td>124.16.74.210/home/home.action</td>
+              <td><%= @course.course_live %></td>
               <td>2016年秋季学期</td></tr>
             <tr class="danger">
               <td>课程是否有作业</td>
-              <td>有</td>
+              <td><%= @course.course_homework %></td>
               <td>2016年秋季学期</td></tr>
             <tr class="success">
               <td>课程是否有组队大作业</td>
-              <td>有</td>
+              <td><%= @course.course_teamwork %></td>
               <td>2016年秋季学期</td></tr>
             <tr class="active">
               <td>课程评分</td>
-              <td>4 stars based on	253 votes</td>
+              <td><%= @course.course_score %></td>
               <td>2016年秋季学期</td></tr>
             </tbody>
           </table>

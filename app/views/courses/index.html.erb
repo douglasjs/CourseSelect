@@ -27,9 +27,15 @@
             <tbody>
             <% @course.each do |course| %>
                 <tr>
-
                   <td><%= course.course_code %></td>
-                  <td><%= course.name %></td>
+                  <td><%= course.name %>
+                    <% @is_open_course = is_open_course(course, current_user) %>
+                    <%if @is_open_course==true %>
+                        <span class="label label-info">旁听</span>
+                    <% else %>
+                        <span class="label label-danger"></span>
+                    <% end %>
+                  </td>
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
                   <td><%= course.teacher.name %></td>

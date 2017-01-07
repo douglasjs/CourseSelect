@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :courses do
     member do
-      get :is_open
       get :timetable
       get :swap
       get :select
@@ -64,6 +63,7 @@ Rails.application.routes.draw do
       get :list
     end
   end
+
   get 'sessions/login' => 'sessions#new'
   post 'sessions/login' => 'sessions#create'
   delete 'sessions/logout' => 'sessions#destroy'
