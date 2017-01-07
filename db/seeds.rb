@@ -41,11 +41,13 @@ end
 
 
 Semester.create!(
-    info: "2016年春季学期"
+    info: "2016年春季学期",
+    is_open: false
 )
 
 sem2016=Semester.create!(
-    info: "2016年秋季学期"
+    info: "2016年秋季学期",
+    is_open: true
 )
 
 User.create(
