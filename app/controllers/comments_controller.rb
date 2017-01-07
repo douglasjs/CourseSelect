@@ -101,15 +101,18 @@ class CommentsController < ApplicationController
       end
     end
       @i = 0
+      @i_count = 0
       @comments_score_sum = 0
       while @i < 17 do
-        if  @comments_count[@i] > 0 then
+        if  @comments_count[@i] > 0then
+          @i_count+=1
         @comments_score[@i] /=  @comments_count[@i]
         @comments_score_sum += @comments_score[@i]
         end
         @i+=1
       end
-     @comments_score_sum /= 17
+     @comments_score_sum /= @i_count
+     @course.update_attributes(:course_score=>@comments_score_sum)
   end
 
   def index
