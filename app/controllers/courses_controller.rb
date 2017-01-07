@@ -72,14 +72,27 @@ class CoursesController < ApplicationController
   end
   def selected
     @course = Course.find_by_id(params[:id])
-    @student=@course.users
+    @grades=@course.grades.where(:open=>false)
+    student = []
+    @grades.each do |grade|
+      if grade.open = true
+        student<<User.find_by_id(grade.user_id)
+      end
+    end
+    @student=student
   end
 
   def chart
     @course = Course.find_by_id(params[:id])
-    @student=@course.users
+    @grades=@course.grades.where(:open=>false)
+    student = []
+    @grades.each do |grade|
+      if grade.open = true
+        student<<User.find_by_id(grade.user_id)
+      end
+    end
     @student_department = {}
-    @student.each do |stu|
+    student.each do |stu|
       if !@student_department.has_key?(stu.department)
         @student_department[stu.department] =0
       end
@@ -123,6 +136,7 @@ class CoursesController < ApplicationController
   def select
     @course=Course.find_by_id(params[:id])
     current_user.courses<<@course
+    Grade.create(:user_id => current_user.id, :course_id => @course.id)
     flash={:success => "成功选择课程: #{@course.name}"}
     redirect_to courses_path, flash: flash
   end
@@ -130,14 +144,7 @@ class CoursesController < ApplicationController
   def open_visit
     @course=Course.find_by_id(params[:id])
     current_user.courses<<@course
-    @grades=@course.grades
-    @grades.each do |grade|
-      if grade.user.name == current_user.name
-        grade.update_attributes(:open=>true)
-      end
-
-    end
-
+    Grade.create(:user_id => current_user.id, :course_id => @course.id,:open => true)
     flash={:success => "成功旁听课程: #{@course.name}"}
     redirect_to courses_path, flash: flash
   end
@@ -158,17 +165,20 @@ class CoursesController < ApplicationController
         if  current_user_course.course_time == @course.course_time
           @info = current_user_course.name
           current_user.courses.delete(current_user_course)
+          Grade.where(:user_id => current_user.id, :course_id => current_user_course.id).take.destroy()
           break
     end
       end
     @course=Course.find_by_id(params[:id])
     current_user.courses<<@course
+    Grade.create(:user_id => current_user.id, :course_id => @course.id)
     flash={:success => "成功选择课程: #{@course.name} 成功退选课程: #{@info}"}
     redirect_to courses_path, flash: flash
   end
 
   def quit
     @course=Course.find_by_id(params[:id])
+    Grade.where(:user_id => current_user.id, :course_id => @course.id).take.destroy()
     current_user.courses.delete(@course)
     flash={:success => "成功退选课程: #{@course.name}"}
     redirect_to courses_path, flash: flash
@@ -236,7 +246,7 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:course_code, :name, :course_type, :teaching_type, :exam_type,
-                                   :credit, :limit_num, :class_room, :course_time, :course_week,:course_difficulty,:course_suit,:course_score,:course_outline,:course_exam_details,:course_chapter,:course_live,:course_homework,:course_teamwork,:semester_id)
+                                   :credit, :limit_num, :class_room, :course_time, :course_week, :course_difficulty, :course_suit, :course_score, :course_outline, :course_exam_details, :course_chapter, :course_live, :course_homework, :course_teamwork, :semester_id)
   end
 
 
