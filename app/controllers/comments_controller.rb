@@ -111,8 +111,10 @@ class CommentsController < ApplicationController
         end
         @i+=1
       end
+    if @i_count > 0
      @comments_score_sum /= @i_count
      @course.update_attributes(:course_score=>@comments_score_sum)
+      end
   end
 
   def index
